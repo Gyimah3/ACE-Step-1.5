@@ -57,11 +57,13 @@ python3 train.py fixed \
     --model-variant "$MODEL_VARIANT" \
     --dataset-dir "$TENSOR_DIR" \
     --output-dir "$OUTPUT_DIR" \
-    --preset "$PRESET" \
     --batch-size "$BATCH_SIZE" \
     --gradient-accumulation "$GRAD_ACCUM" \
     --epochs "$EPOCHS" \
-    --save-every "$SAVE_EVERY"
+    --save-every "$SAVE_EVERY" \
+    --rank 128 \
+    --alpha 256 \
+    --gradient-checkpointing
 
 echo ""
 echo "Done! LoRA weights saved to: $OUTPUT_DIR"
