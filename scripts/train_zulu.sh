@@ -8,6 +8,11 @@
 
 set -e
 
+# Force torchaudio to use ffmpeg backend (torchcodec may fail on some CUDA
+# environments due to library version mismatches, e.g. libnvrtc not found).
+# This mirrors the same workaround used in acestep_v15_pipeline.py.
+export TORCHAUDIO_USE_BACKEND=ffmpeg
+
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$ROOT_DIR"

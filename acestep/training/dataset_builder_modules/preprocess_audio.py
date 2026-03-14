@@ -3,7 +3,13 @@ import torchaudio
 
 def load_audio_stereo(audio_path: str, target_sample_rate: int, max_duration: float):
     """Load audio, resample, convert to stereo, and truncate."""
-    audio, sr = torchaudio.load(audio_path)
+    # torchaudio >=2.9 defaults to torchcodec which may be unavailable (e.g. CUDA
+    # library mismatch on some servers).  Try ffmpeg first, then fall back to the
+    # default loader so we always have an audio-loading path.
+    try:
+        audio, sr = torchaudio.load(audio_path, backend="ffmpeg")
+    except Exception:
+        audio, sr = torchaudio.load(audio_path)
 
     if sr != target_sample_rate:
         resampler = torchaudio.transforms.Resample(sr, target_sample_rate)
