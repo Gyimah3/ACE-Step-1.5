@@ -20,7 +20,7 @@ cd "$ROOT_DIR"
 CHECKPOINT_DIR="./checkpoints"
 DATASET_JSON="./datasets/zulu_dataset.json"
 AUDIO_DIR="./datasets/audio"
-TENSOR_DIR="./datasets/zulu_tensors"
+TENSOR_DIR="./zulu_tensors"
 OUTPUT_DIR="./lora_output/zulu"
 PRESET="vram_24gb_plus"        # RTX 6000 Ada 48GB
 MODEL_VARIANT="turbo"          # or "default"
