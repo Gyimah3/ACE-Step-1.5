@@ -40,6 +40,8 @@ if [ "${1}" != "train" ]; then
     python3 train.py fixed \
         --checkpoint-dir "$CHECKPOINT_DIR" \
         --model-variant "$MODEL_VARIANT" \
+        --dataset-dir "$TENSOR_DIR" \
+        --output-dir "$OUTPUT_DIR" \
         --preprocess \
         --dataset-json "$DATASET_JSON" \
         --audio-dir "$AUDIO_DIR" \
